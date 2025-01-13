@@ -1,6 +1,6 @@
 -- GUI Setup
 local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Name = "GuiRufiego"
+ScreenGui.Name = "ScreenGui"
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ScreenGui.Enabled = true -- On by default
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
