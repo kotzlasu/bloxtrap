@@ -111,6 +111,7 @@ local JumpButton = createButton("Inf Jump", "INFINITY JUMP", UDim2.new(0.0340021
 local TpButton = createButton("Ctrl To Tp", "CTRL TO TP", UDim2.new(0.0340021, 0, 0.255013, 0))
 local RedLightGreenLightButton = createButton("RedLight Green Light", "RED LIGHT GREEN LIGHT", UDim2.new(0.0340021, 0, 0.373144, 0))
 local PawObbyButton = createButton("Paw Obby", "PAW OBBY", UDim2.new(0.0340021, 0, 0.499584, 0))
+local BrookHaveenButton = createButton("Brookhaveen unban", "BROOKHAVEEN UNBAN", UDim2.new(0.0340021, 0, 0.626024, 0))
 
 -- Speed 50 Functionality
 SpeedButton.MouseButton1Click:Connect(function()
@@ -228,6 +229,26 @@ PawObbyButton.MouseButton1Click:Connect(function()
         local tween = createTween(position)
         tween:Play()
         tween.Completed:Wait()
+    end
+end)
+
+BrookHaveenButton.MouseButton1Click:Connect(function()
+    local function removeBannedBlocks()
+    -- Przeszukiwanie workspace
+    for _, obj in ipairs(workspace:GetDescendants()) do
+        if obj:IsA("BasePart") and string.find(obj.Name, "BannedBlock") then
+            obj:Destroy() -- Usuwa obiekt
+        end
+    end
+end
+
+-- Uruchamianie skryptu po załadowaniu gry
+removeBannedBlocks()
+
+-- Opcjonalnie możesz połączyć to ze zdarzeniem, np. za każdym razem gdy coś nowego pojawi się w workspace:
+workspace.ChildAdded:Connect(function(child)
+    if child:IsA("BasePart") and string.find(child.Name, "BannedBlock") then
+        child:Destroy()
     end
 end)
 
