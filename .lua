@@ -4,15 +4,6 @@ ScreenGui.Name = "GuiRufiego"
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ScreenGui.Enabled = true -- On by default
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
-local Main = Instance.new("Frame")
-Main.Name = "Main"
-Main.Position = UDim2.new(0.341502, 0, 0.285917, 0)
-Main.Size = UDim2.new(0, 400, 0, 300)
-Main.BackgroundColor3 = Color3.new(0.121569, 0.121569, 0.121569)
-Main.BorderSizePixel = 0
-Main.Parent = ScreenGui
-
 local Colors = Instance.new("Frame")
 Colors.Name = "Colors"
 Colors.Position = UDim2.new(0.0340021, 0, -0.000749207, 0)
@@ -73,6 +64,14 @@ local UICorner3 = Instance.new("UICorner")
 UICorner3.Name = "UICorner"
 UICorner3.CornerRadius = UDim.new(1, 0)
 UICorner3.Parent = Green
+
+local Main = Instance.new("Frame")
+Main.Name = "Main"
+Main.Position = UDim2.new(0.341502, 0, 0.285917, 0)
+Main.Size = UDim2.new(0, 400, 0, 300)
+Main.BackgroundColor3 = Color3.new(0.121569, 0.121569, 0.121569)
+Main.BorderSizePixel = 0
+Main.Parent = ScreenGui
 
 local ScrollingFrame = Instance.new("ScrollingFrame")
 ScrollingFrame.Name = "ScrollingFrame"
