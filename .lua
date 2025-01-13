@@ -102,11 +102,14 @@ local BrookHaveenButton = createButton("Brookhaveen unban", "BROOKHAVEEN UNBAN",
 
 -- Speed 50 Functionality
 SpeedButton.MouseButton1Click:Connect(function()
-    local player = game.Players.LocalPlayer
-    local character = player.Character or player.CharacterAdded:Wait()
-    local humanoid = character:WaitForChild("Humanoid")
-    if humanoid then
-        humanoid.WalkSpeed = 50
+    while true do
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoid = character:WaitForChild("Humanoid")
+        if humanoid then
+            humanoid.WalkSpeed = 50
+        end
+        wait(0)
     end
 end)
 
@@ -164,7 +167,7 @@ end)
 -- Toggle GUI with "K" Key
 local UserInputService = game:GetService("UserInputService")
 UserInputService.InputBegan:Connect(function(input, gameProcessed)
-    if input.KeyCode == Enum.KeyCode.K then
+    if input.KeyCode == Enum.KeyCode.q then
         ScreenGui.Enabled = not ScreenGui.Enabled
     end
 end)
