@@ -168,37 +168,23 @@ TpButton.MouseButton1Click:Connect(function()
     end
 end)
 
---czerwone zielone skrypt
-local startPosition = CFrame.new(8936.64, 237.481, -10345.6)
-local endPosition = CFrame.new(8455.02, 237.455, -10349.8)
-local duration = 2.7 -- Czas tweenowania w sekundach
+-- Red Light Green Light Functionality
+RedLightGreenLightButton.MouseButton1Click:Connect(function()
+    local startPosition = CFrame.new(8936.64, 237.481, -10345.6)
+    local endPosition = CFrame.new(8455.02, 237.455, -10349.8)
+    local duration = 2.7 -- Tween duration
 
--- Pobierz gracza lokalnego
-    local Players = game:GetService("Players")
-    local player = Players.LocalPlayer
+    local player = game.Players.LocalPlayer
     local character = player.Character or player.CharacterAdded:Wait()
     local rootPart = character:WaitForChild("HumanoidRootPart")
+
     local TweenService = game:GetService("TweenService")
 
-    local partDuration = duration / #positions
-    local function createTween(targetPosition)
-        local tweenInfo = TweenInfo.new(
-            partDuration,
-            Enum.EasingStyle.Quad,
-            Enum.EasingDirection.Out,
-            0,
-            false,
-            0
-        )
-        local tweenGoals = { CFrame = targetPosition }
-        return TweenService:Create(rootPart, tweenInfo, tweenGoals)
-    end
+    local tweenInfo = TweenInfo.new(duration, Enum.EasingStyle.Quad, Enum.EasingDirection.Out, 0, false, 0)
+    local tweenGoals = { CFrame = endPosition }
 
-    for i, position in ipairs(positions) do
-        local tween = createTween(position)
-        tween:Play()
-        tween.Completed:Wait()
-    end
+    local tween = TweenService:Create(rootPart, tweenInfo, tweenGoals)
+    tween:Play()
 end)
 
 -- Paw Obby Functionality
