@@ -167,7 +167,7 @@ end)
 -- Toggle GUI with "K" Key
 local UserInputService = game:GetService("UserInputService")
 UserInputService.InputBegan:Connect(function(input, gameProcessed)
-    if input.KeyCode == Enum.KeyCode.q then
+    if input.KeyCode == Enum.KeyCode.0 then
         ScreenGui.Enabled = not ScreenGui.Enabled
     end
 end)
