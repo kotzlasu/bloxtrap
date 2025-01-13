@@ -2,6 +2,9 @@
 local ScreenGui = Instance.new("ScreenGui")
 local PawObbyButton = Instance.new("TextButton")
 local GreenLightButton = Instance.new("TextButton")
+local SpeedButton = Instance.new("TextButton")
+local JumpButton = Instance.new("TextButton")
+local TpButton = Instance.new("TextButton")
 
 -- Ustawienia GUI
 ScreenGui.Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
@@ -17,6 +20,24 @@ GreenLightButton.Parent = ScreenGui
 GreenLightButton.Size = UDim2.new(0, 200, 0, 50)
 GreenLightButton.Position = UDim2.new(0, 50, 0, 120)
 GreenLightButton.Text = "Red Light Green Light"
+
+-- Przycisk "Speed 50"
+SpeedButton.Parent = ScreenGui
+SpeedButton.Size = UDim2.new(0, 200, 0, 50)
+SpeedButton.Position = UDim2.new(0, 50, 0, 190)
+SpeedButton.Text = "Speed 50"
+
+-- Przycisk "Infinite Jump"
+JumpButton.Parent = ScreenGui
+JumpButton.Size = UDim2.new(0, 200, 0, 50)
+JumpButton.Position = UDim2.new(0, 50, 0, 260)
+JumpButton.Text = "Infinite Jump"
+
+-- Przycisk "Ctrl To TP"
+TpButton.Parent = ScreenGui
+TpButton.Size = UDim2.new(0, 200, 0, 50)
+TpButton.Position = UDim2.new(0, 50, 0, 330)
+TpButton.Text = "Ctrl To TP"
 
 -- Skrypt dla Paw Obby
 PawObbyButton.MouseButton1Click:Connect(function()
@@ -99,4 +120,50 @@ GreenLightButton.MouseButton1Click:Connect(function()
 
     -- Uruchom Tween
     tween:Play()
+end)
+
+-- Skrypt dla Speed 50
+SpeedButton.MouseButton1Click:Connect(function()
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoid = character:WaitForChild("Humanoid")
+    humanoid.WalkSpeed = 50
+end)
+
+-- Skrypt dla Infinite Jump
+JumpButton.MouseButton1Click:Connect(function()
+    _G.infinjump = not _G.infinjump
+    if _G.infinJumpStarted == nil then
+        _G.infinJumpStarted = true
+        local plr = game:GetService("Players").LocalPlayer
+        local m = plr:GetMouse()
+        m.KeyDown:Connect(function(k)
+            if _G.infinjump then
+                if k:byte() == 32 then
+                    local humanoid = plr.Character:FindFirstChildOfClass("Humanoid")
+                    humanoid:ChangeState("Jumping")
+                end
+            end
+        end)
+    end
+end)
+
+-- Skrypt dla Ctrl To TP
+TpButton.MouseButton1Click:Connect(function()
+    if _G.WRDClickTeleport == nil then
+        _G.WRDClickTeleport = true
+        local player = game:GetService("Players").LocalPlayer
+        local UserInputService = game:GetService("UserInputService")
+        local mouse = player:GetMouse()
+
+        UserInputService.InputBegan:Connect(function(input, gameProcessed)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 then
+                if _G.WRDClickTeleport and UserInputService:IsKeyDown(Enum.KeyCode.LeftControl) then
+                    player.Character:MoveTo(Vector3.new(mouse.Hit.x, mouse.Hit.y, mouse.Hit.z))
+                end
+            end
+        end)
+    else
+        _G.WRDClickTeleport = not _G.WRDClickTeleport
+    end
 end)
