@@ -1,6 +1,6 @@
 -- GUI Setup
-local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Name = "GuiRufiego"
+local ScreenGui = Instance.new("GuiRufiego")
+ScreenGui.Name = "ScreenGui"
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ScreenGui.Enabled = true -- On by default
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
@@ -20,8 +20,9 @@ Colors.Size = UDim2.new(0, 69, 0, 50)
 Colors.BackgroundColor3 = Color3.new(0.121569, 0.121569, 0.121569)
 Colors.BackgroundTransparency = 1
 Colors.BorderSizePixel = 0
+Colors.BorderColor3 = Color3.new(0, 0, 0)
 Colors.Transparency = 1
-Colors.Parent = Main
+Colors.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 local Red = Instance.new("Frame")
 Red.Name = "Red"
@@ -36,6 +37,14 @@ local UICorner = Instance.new("UICorner")
 UICorner.Name = "UICorner"
 UICorner.CornerRadius = UDim.new(1, 0)
 UICorner.Parent = Red
+
+local UIListLayout = Instance.new("UIListLayout")
+UIListLayout.Name = "UIListLayout"
+UIListLayout.Padding = UDim.new(0, 10)
+UIListLayout.FillDirection = Enum.FillDirection.Horizontal
+UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout.Parent = Colors
 
 local Yellow = Instance.new("Frame")
 Yellow.Name = "Yellow"
@@ -64,14 +73,6 @@ local UICorner3 = Instance.new("UICorner")
 UICorner3.Name = "UICorner"
 UICorner3.CornerRadius = UDim.new(1, 0)
 UICorner3.Parent = Green
-
-local UIListLayout = Instance.new("UIListLayout")
-UIListLayout.Name = "UIListLayout"
-UIListLayout.Padding = UDim.new(0, 10)
-UIListLayout.FillDirection = Enum.FillDirection.Horizontal
-UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout.Parent = Colors
 
 local ScrollingFrame = Instance.new("ScrollingFrame")
 ScrollingFrame.Name = "ScrollingFrame"
