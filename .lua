@@ -13,16 +13,6 @@ Main.BackgroundColor3 = Color3.new(0.121569, 0.121569, 0.121569)
 Main.BorderSizePixel = 0
 Main.Parent = ScreenGui
 
-local ScrollingFrame = Instance.new("ScrollingFrame")
-ScrollingFrame.Name = "ScrollingFrame"
-ScrollingFrame.Position = UDim2.new(0, 0, 0.133333, 0)
-ScrollingFrame.Size = UDim2.new(0, 400, 0, 260)
-ScrollingFrame.BackgroundTransparency = 1
-ScrollingFrame.BorderSizePixel = 0
-ScrollingFrame.ScrollBarImageColor3 = Color3.new(0, 0, 0)
-ScrollingFrame.Active = true
-ScrollingFrame.Parent = Main
-
 local Colors = Instance.new("Frame")
 Colors.Name = "Colors"
 Colors.Position = UDim2.new(0.0340021, 0, -0.000749207, 0)
@@ -82,6 +72,16 @@ UIListLayout.FillDirection = Enum.FillDirection.Horizontal
 UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
 UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 UIListLayout.Parent = Colors
+
+local ScrollingFrame = Instance.new("ScrollingFrame")
+ScrollingFrame.Name = "ScrollingFrame"
+ScrollingFrame.Position = UDim2.new(0, 0, 0.133333, 0)
+ScrollingFrame.Size = UDim2.new(0, 400, 0, 260)
+ScrollingFrame.BackgroundTransparency = 1
+ScrollingFrame.BorderSizePixel = 0
+ScrollingFrame.ScrollBarImageColor3 = Color3.new(0, 0, 0)
+ScrollingFrame.Active = true
+ScrollingFrame.Parent = Main
 
 -- Create buttons and functions for GUI
 local function createButton(name, text, position)
