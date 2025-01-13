@@ -234,7 +234,7 @@ end)
 -- Toggle GUI with "K" Key
 local UserInputService = game:GetService("UserInputService")
 UserInputService.InputBegan:Connect(function(input, gameProcessed)
-    if input.KeyCode == Enum.KeyCode.K then
+    if input.KeyCode == Enum.KeyCode.= then
         ScreenGui.Enabled = not ScreenGui.Enabled -- Toggle visibility
     end
 end)
