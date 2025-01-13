@@ -1,6 +1,6 @@
 -- GUI Setup
-local ScreenGui = Instance.new("GuiRufiego")
-ScreenGui.Name = "ScreenGui"
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "GuiRufiego"
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ScreenGui.Enabled = true -- On by default
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
@@ -12,6 +12,67 @@ Main.Size = UDim2.new(0, 400, 0, 300)
 Main.BackgroundColor3 = Color3.new(0.121569, 0.121569, 0.121569)
 Main.BorderSizePixel = 0
 Main.Parent = ScreenGui
+
+local Colors = Instance.new("Frame")
+Colors.Name = "Colors"
+Colors.Position = UDim2.new(0.0340021, 0, -0.000749207, 0)
+Colors.Size = UDim2.new(0, 69, 0, 50)
+Colors.BackgroundColor3 = Color3.new(0.121569, 0.121569, 0.121569)
+Colors.BackgroundTransparency = 1
+Colors.BorderSizePixel = 0
+Colors.BorderColor3 = Color3.new(0, 0, 0)
+Colors.Transparency = 1
+Colors.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+local Red = Instance.new("Frame")
+Red.Name = "Red"
+Red.Position = UDim2.new(0.0425, 0, 0.34, 0)
+Red.Size = UDim2.new(0, 15, 0, 15)
+Red.BackgroundColor3 = Color3.new(1, 0.372549, 0.352941)
+Red.BorderSizePixel = 0
+Red.BorderColor3 = Color3.new(0, 0, 0)
+Red.Parent = Colors
+
+local UICorner = Instance.new("UICorner")
+UICorner.Name = "UICorner"
+UICorner.CornerRadius = UDim.new(1, 0)
+UICorner.Parent = Red
+
+local UIListLayout = Instance.new("UIListLayout")
+UIListLayout.Name = "UIListLayout"
+UIListLayout.Padding = UDim.new(0, 10)
+UIListLayout.FillDirection = Enum.FillDirection.Horizontal
+UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout.Parent = Colors
+
+local Yellow = Instance.new("Frame")
+Yellow.Name = "Yellow"
+Yellow.Position = UDim2.new(0.0425, 0, 0.34, 0)
+Yellow.Size = UDim2.new(0, 15, 0, 15)
+Yellow.BackgroundColor3 = Color3.new(1, 0.745098, 0.180392)
+Yellow.BorderSizePixel = 0
+Yellow.BorderColor3 = Color3.new(0, 0, 0)
+Yellow.Parent = Colors
+
+local UICorner2 = Instance.new("UICorner")
+UICorner2.Name = "UICorner"
+UICorner2.CornerRadius = UDim.new(1, 0)
+UICorner2.Parent = Yellow
+
+local Green = Instance.new("Frame")
+Green.Name = "Green"
+Green.Position = UDim2.new(0.0425, 0, 0.34, 0)
+Green.Size = UDim2.new(0, 15, 0, 15)
+Green.BackgroundColor3 = Color3.new(0.164706, 0.792157, 0.266667)
+Green.BorderSizePixel = 0
+Green.BorderColor3 = Color3.new(0, 0, 0)
+Green.Parent = Colors
+
+local UICorner3 = Instance.new("UICorner")
+UICorner3.Name = "UICorner"
+UICorner3.CornerRadius = UDim.new(1, 0)
+UICorner3.Parent = Green
 
 local ScrollingFrame = Instance.new("ScrollingFrame")
 ScrollingFrame.Name = "ScrollingFrame"
