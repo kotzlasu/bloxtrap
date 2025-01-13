@@ -168,24 +168,43 @@ TpButton.MouseButton1Click:Connect(function()
     end
 end)
 
--- Red Light Green Light Functionality
-RedLightGreenLightButton.MouseButton1Click:Connect(function()
-    local startPosition = CFrame.new(8936.64, 237.481, -10345.6)
-    local endPosition = CFrame.new(8455.02, 237.455, -10349.8)
-    local duration = 2.7 -- Tween duration
+--czerwone zielone skrypt
+local startPosition = CFrame.new(8936.64, 237.481, -10345.6)
+local endPosition = CFrame.new(8455.02, 237.455, -10349.8)
+local duration = 2.7 -- Czas tweenowania w sekundach
 
-    local player = game.Players.LocalPlayer
-    local character = player.Character or player.CharacterAdded:Wait()
-    local rootPart = character:WaitForChild("HumanoidRootPart")
+-- Pobierz gracza lokalnego
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer -- Lokalny gracz
+local character = player.Character or player.CharacterAdded:Wait() -- Pobiera model postaci gracza
 
-    local TweenService = game:GetService("TweenService")
+-- Znajdź HumanoidRootPart, który steruje pozycją gracza
+local rootPart = character:WaitForChild("HumanoidRootPart")
 
-    local tweenInfo = TweenInfo.new(duration, Enum.EasingStyle.Quad, Enum.EasingDirection.Out, 0, false, 0)
-    local tweenGoals = { CFrame = endPosition }
+-- Utwórz TweenService
+local TweenService = game:GetService("TweenService")
 
-    local tween = TweenService:Create(rootPart, tweenInfo, tweenGoals)
-    tween:Play()
-end)
+-- Właściwości Tweena
+local tweenInfo = TweenInfo.new(
+    duration, -- Czas trwania
+    Enum.EasingStyle.Quad, -- Styl easing (np. szybki start, wolniejsze zakończenie)
+    Enum.EasingDirection.Out, -- Kierunek easing
+    0, -- Liczba powtórzeń
+    false, -- Czy odwracać (reverse)
+    0 -- Opóźnienie
+)
+
+-- Cel Tweena
+local tweenGoals = {
+    CFrame = endPosition
+}
+
+-- Utwórz Tween
+local tween = TweenService:Create(rootPart, tweenInfo, tweenGoals)
+
+-- Uruchom Tween
+tween:Play()
+
 
 -- Paw Obby Functionality
 PawObbyButton.MouseButton1Click:Connect(function()
