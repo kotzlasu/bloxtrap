@@ -174,37 +174,32 @@ local endPosition = CFrame.new(8455.02, 237.455, -10349.8)
 local duration = 2.7 -- Czas tweenowania w sekundach
 
 -- Pobierz gracza lokalnego
-local Players = game:GetService("Players")
-local player = Players.LocalPlayer -- Lokalny gracz
-local character = player.Character or player.CharacterAdded:Wait() -- Pobiera model postaci gracza
+    local Players = game:GetService("Players")
+    local player = Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local rootPart = character:WaitForChild("HumanoidRootPart")
+    local TweenService = game:GetService("TweenService")
 
--- Znajdź HumanoidRootPart, który steruje pozycją gracza
-local rootPart = character:WaitForChild("HumanoidRootPart")
+    local partDuration = duration / #positions
+    local function createTween(targetPosition)
+        local tweenInfo = TweenInfo.new(
+            partDuration,
+            Enum.EasingStyle.Quad,
+            Enum.EasingDirection.Out,
+            0,
+            false,
+            0
+        )
+        local tweenGoals = { CFrame = targetPosition }
+        return TweenService:Create(rootPart, tweenInfo, tweenGoals)
+    end
 
--- Utwórz TweenService
-local TweenService = game:GetService("TweenService")
-
--- Właściwości Tweena
-local tweenInfo = TweenInfo.new(
-    duration, -- Czas trwania
-    Enum.EasingStyle.Quad, -- Styl easing (np. szybki start, wolniejsze zakończenie)
-    Enum.EasingDirection.Out, -- Kierunek easing
-    0, -- Liczba powtórzeń
-    false, -- Czy odwracać (reverse)
-    0 -- Opóźnienie
-)
-
--- Cel Tweena
-local tweenGoals = {
-    CFrame = endPosition
-}
-
--- Utwórz Tween
-local tween = TweenService:Create(rootPart, tweenInfo, tweenGoals)
-
--- Uruchom Tween
-tween:Play()
-
+    for i, position in ipairs(positions) do
+        local tween = createTween(position)
+        tween:Play()
+        tween.Completed:Wait()
+    end
+end)
 
 -- Paw Obby Functionality
 PawObbyButton.MouseButton1Click:Connect(function()
