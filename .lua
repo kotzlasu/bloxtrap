@@ -15,7 +15,7 @@ Main.Parent = ScreenGui
 
 local Close_Button = Instance.new("ImageButton")
 Close_Button.Name = "Close Button"
-Close_Button.Position = UDim2.new(0.91, 0, 0.03, 0)
+Close_Button.Position = UDim2.new(0.90, 0, 0.03, 0)
 Close_Button.Size = UDim2.new(0, 25, 0, 25)
 Close_Button.BackgroundColor3 = Color3.new(1, 1, 1)
 Close_Button.BackgroundTransparency = 1
@@ -24,6 +24,11 @@ Close_Button.BorderColor3 = Color3.new(0, 0, 0)
 Close_Button.Transparency = 1
 Close_Button.Image = "rbxassetid://108156789436291"
 Close_Button.Parent = Main
+
+-- Close Button functionality
+Close_Button.MouseButton1Click:Connect(function()
+    ScreenGui.Enabled = false  -- Disable the ScreenGui
+end)
 
 -- Dragging functionality
 local dragging
