@@ -13,6 +13,36 @@ Main.BackgroundColor3 = Color3.new(0.121569, 0.121569, 0.121569)
 Main.BorderSizePixel = 0
 Main.Parent = ScreenGui
 
+-- Dragging functionality
+local dragging
+local dragInput
+local dragStart
+local startPos
+
+local function update(input)
+    local delta = input.Position - dragStart
+    Main.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+end
+
+Main.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        dragging = true
+        dragStart = input.Position
+        startPos = Main.Position
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragging = false
+            end
+        end)
+    end
+end)
+
+Main.InputChanged:Connect(function(input)
+    if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
+        update(input)
+    end
+end)
+
 local Colors = Instance.new("Frame")
 Colors.Name = "Colors"
 Colors.Position = UDim2.new(0.0340021, 0, -0.000749207, 0)
